@@ -36,6 +36,7 @@ static uint32_t lcdPow10(uint8_t n);
 
 void max7219_Init(uint8_t intensivity)
 {
+    max7219_SendData(REG_DISPLAY_TEST, 0x00); // often MAX7219 runs in test mode and does not respond to any commands. This line fix it.
 	max7219_Turn_On();
 	max7219_SendData(REG_SCAN_LIMIT, NUMBER_OF_DIGITS - 1);
 	max7219_SetIntensivity(intensivity);
